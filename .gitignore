@@ -1,15 +1,7 @@
-# Terraform
-.terraform/
-*.tfstate
-*.tfstate.*
-crash.log
-
-# Variables
-*.tfvars
-
-# VS Code
-.vscode/
-
-# OS files
-.DS_Store
-Thumbs.db
+node_modules
+.pytest_cache
+.terraform
+.terraform.tfstate.lock.info
+*.tfstate.backup
+credentials
+.pytest_cache
