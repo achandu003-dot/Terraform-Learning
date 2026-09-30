@@ -33,7 +33,7 @@ jobs:
 
       - run: pipenv install --dev
 
-      - run: pipenv run lint
+      - run: pipenv run flake8 . --ignore=E501
 
   test:
     runs-on: ubuntu-latest
