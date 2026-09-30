@@ -1,4 +1,4 @@
-name: Frontend CI
+name: Frontend Continuous Integration
 
 on:
   pull_request:
@@ -7,6 +7,9 @@ on:
       - "starter/frontend/**"
       - ".github/workflows/frontend-ci.yml"
   workflow_dispatch:
+
+env:
+  REACT_APP_MOVIE_API_URL: http://localhost:5000
 
 jobs:
   lint:
@@ -53,4 +56,5 @@ jobs:
           cache: npm
           cache-dependency-path: starter/frontend/package-lock.json
       - run: npm ci
-      - run: npm run build
+      - name: Build frontend Docker image
+        run: docker build --build-arg=REACT_APP_MOVIE_API_URL=${{ env.REACT_APP_MOVIE_API_URL }} --tag=mp-frontend:${{ github.sha }} .
